@@ -1,18 +1,119 @@
 // Iteration #1: Find the maximum
+function maxOfTwoNumbers(n1, n2){
+  if (n1 > n2){
+    return n1;
+  } else {
+    return n2;
+  }
+}
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+
+function findLongestWord(arr){
+  if(arr.length < 1){
+    return null;
+  } else if(arr.length === 1){
+    return arr[0];
+  } else {
+    var largest = arr[0];
+    if(arr.length < 0){
+      largest = arr[i];
+    }
+    for(i = 0; i < arr.length-1; i++){
+      arr[i].length
+      if (largest.length < arr[i+1].length){
+        largest = arr[i+1];
+      }
+    }
+    return largest;
+  }
+}
 
 // Iteration #3: Calculate the sum
 
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
+function sumNumbers(arr){
+  if(arr.length < 1){
+    return 0;
+  }
+  var total = 0;
+  for (var i = 0; i < arr.length; i++){
+    if(arr.lengh === 0){
+      return 0;
+    }
+    total += arr[i];
+  }
+  return total;
+}
+
+  // Iteration #3.1: Calculate the sum
+  const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+  function sum(arr){
+    if (arr.length < 1){
+      return 0;
+    } else if(arr.lengh === 1){
+      return arr[0];
+    } else {
+      var sum = 0;
+    arr.map(function(element){
+      if(typeof(element) === "string"){
+        sum += element.length;
+      } else if(typeof(element) === "boolean"){
+        if(element === true){
+          sum += 1;
+        }
+      }  else if (typeof(element) === "array" || typeof(element) === "object"){
+        throw new Error("Unsupported data type sir or ma'am");
+      }
+      else {
+        sum += element;
+      }
+    })
+    return sum;
+    }
+  }
+
+
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
+function averageNumbers(arr){
+if (arr < 1){
+  return null;
+}
+  let a = sumNumbers(arr);
+  let b = a / arr.length;
+  return b;
+}
+
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+
+ function averageWordLength(arr){
+  if( arr.length < 1){
+    return null;
+  }
+  let a = sum(arr);
+  let b = a / arr.length;
+    return b;
+ }
+
+
+ // 4.1: A generic avg() function ("mixedArr" - Iteration 3.1)
+
+ function avg(arr){
+   if(arr.length < 1){
+     return null;
+   }
+  let a = sum(arr);
+  let b = a / arr.length;
+  let c = parseFloat(b.toFixed(2));
+  return c;
+ }
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -29,8 +130,36 @@ const wordsUnique = [
   'bring'
 ];
 
+function uniquifyArray(arr){
+  var newArr = [];
+  if (arr.length < 1){
+  return null;
+}
+  newArr = arr.filter(function(element, index){
+    return arr.indexOf(element) === index;
+});
+return newArr;
+}
+
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+
+var newWords = [];
+function doesWordExist(arr, str){
+
+  if (arr.length < 1){
+    return null;
+  }  else if (arr.length === 1){
+    return true;
+    } else {
+      for (var i = 0; i < arr.length; i++){
+        if (arr[i] === str){
+          return true;
+        }
+      }
+      return false;
+    }
+};
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -46,6 +175,21 @@ const wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(arr, str){
+  let result = 0;
+  if (arr.length < 1){
+    return 0;
+  }
+  arr.forEach(function (element) {
+    if (element === str){
+      result ++;
+    }
+  })
+  return result;
+  }
+
+
 
 // Iteration #8: Bonus
 
@@ -71,3 +215,26 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+function greatestProduct(matrix){
+
+  for(let j=0; j<matrix.length; j++){
+    let product1 = 0;
+    for(let i=0; i<matrix[j].length;){
+      if (matrix[j][i]*matrix[j][i+1]*matrix[j][i+2]*matrix[j][i+3] > product1){
+      product1 = matrix[j][i]*matrix[j][i+1]*matrix[j][i+2]*matrix[j][i+3]
+     }
+      i = i+4;
+   }
+  let product2 = 0;
+  for(let j=0; j<matrix.length;){
+    for(let i=0; i<matrix[j].length; i++){
+     if (matrix[j][i]*matrix[j+1][i]*matrix[j+2][i]*matrix[j+3][i] > product2){
+      product2 = matrix[j][i]*matrix[j+1][i]*matrix[j+2][i]*matrix[j+3][i]
+     }
+   }
+   j = j+4
+ }
+return product1 > product2 ? product1 : product2
+}
+}
